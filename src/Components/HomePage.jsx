@@ -8,7 +8,12 @@ import {
   CarouselToy,
 } from "./";
 import { Link } from "react-router-dom";
-import banner from '../images/banner_image_2.jpg'
+import banner from "../images/banner_image_2.jpg";
+import kitchen from "../images/Home&Kitchen/7.jpg";
+import top from "../images/Best-seller/3.jpg";
+import women from "../images/women/1.jpg";
+import Gaming from "../images/Gaming/1.jpg";
+import Beauty from "../images/Beauty/1.jpg";
 
 const HomePage = () => {
   return (
@@ -19,23 +24,17 @@ const HomePage = () => {
         <div className="grid grid-cols-3 xl:grid-cols-4 -mt-80 ">
           <PageCard
             title={"Home and Kitchen"}
-            image={
-              "https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/I/91IKjopR2XL._AC_SX679_.jpg"
-            }
+            image={kitchen}
             link={<Link to="/HomeandKitchen">Shop the Winter Sale</Link>}
           />
           <PageCard
             title={"Top Deal"}
-            image={
-              "https://images-na.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/01/77/jkhvkjvbfdnb/softlines-bvskjdshkkd/stores-oxmvjdymqzl/VBQ_-_CRUISE_24_-_LIFESTYLE_-_POINT_OF_SALES_-_5-cropped.jpg"
-            }
+            image={top}
             link={<Link to="/TopDeal">See all deals</Link>}
           />
           <PageCard
             title={"Gaming"}
-            image={
-              "https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/I/71E-+dRC+1L._AC_SX679_.jpg"
-            }
+            image={Gaming}
             link={<Link to="/Office">See all deals</Link>}
           />
           <PageCard
@@ -47,16 +46,12 @@ const HomePage = () => {
           />
           <PageCard
             title={"New years dresses under $50"}
-            image={
-              "https://images-na.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/01/AMAZON_FASHION/2023/SITE_FLIPS/HOLIDAY23/GW/DEC/CC/desktop/CategoryCard_d_2x_HolidayFlip23_Womens_Dec._SY608_CB574574264_.jpg"
-            }
+            image={women}
             link={<Link to="/Women">Shop now</Link>}
           />
           <PageCard
             title={"Beauty"}
-            image={
-              "https://images-na.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/01/AMAZON_FASHION/2023/BRANDED_ACTIVATIONS/ZETA/Street/homepage/DBS-796-Cruise-US-Tier1-Fashion-Support-Homepage-SingleImage-Card-758x608._SY608_CB572212528_.jpg"
-            }
+            image={Beauty}
             link={<Link to="/Beauty">See more pre-loved from Shopbop</Link>}
           />
           <PageCard
@@ -75,7 +70,7 @@ const HomePage = () => {
           />
 
           <div className="m-3 pt-8">
-            <img className="xl:hidden" src={ banner}/>
+            <img className="xl:hidden" src={banner} />
           </div>
         </div>
         <CarouselBooks />
