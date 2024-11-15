@@ -63,7 +63,7 @@ const Gift = () => {
             id="30"
             title={"BlackCard Gift card"}
             image={
-              "https://i0.wp.com/nltaste.com/wp-content/uploads/2022/07/Golden-Gift-Card.jpg?fit=1000%2C1000&ssl=1"
+              "https://basilandblush.com/cdn/shop/products/mfhd_1_30f47de3-8b73-4864-883c-e4fe5b9c4549.png?v=1598291354"
             }
             rating={3}
             price={200}

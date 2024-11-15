@@ -1,4 +1,5 @@
 import React from "react";
+import amazonLogo from '../images/amazon.png'; 
 
 const Footer = () => {
   return (
@@ -60,7 +61,7 @@ const Footer = () => {
         </ul>
           </div>
           <div className=" bg-amazonclone-footer h-32 flex justify-evenly  " >
-              <div> <img className=" w-[60px] " src="../images/amazon.png" /></div>
+              <div> <img className=" w-[60px] " src={amazonLogo } /></div>
               <div className=" w-10 h-8 text-white" >English</div>
           </div>
     </div>

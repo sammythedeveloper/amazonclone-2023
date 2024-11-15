@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "./Firebase";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword,} from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, } from "firebase/auth";
+import amazonLogo from '../images/amazon.png'; 
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -31,8 +32,8 @@ function SignUp() {
         <img
           height={150}
           width={150}
-          className="login__logo"
-          src="https://www.nuvita.com/wp-content/uploads/2018/07/amazon-logo-vector-png-amazon-logo-vector-512.png"
+          className=""
+          src={"https://cdn.pixabay.com/photo/2021/08/10/16/02/amazon-6536326_1280.png"}
         />
       </Link>
       <div className=" w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">

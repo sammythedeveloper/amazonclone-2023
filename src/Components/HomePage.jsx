@@ -11,9 +11,10 @@ import { Link } from "react-router-dom";
 import banner from "../images/banner_image_2.jpg";
 import kitchen from "../images/Home&Kitchen/7.jpg";
 import top from "../images/Best-seller/3.jpg";
-import women from "../images/women/1.jpg";
-import Gaming from "../images/Gaming/1.jpg";
+import Women from "../images/Women/1.jpg";
+import Gaming from "../images/Gaming/out.jpg";
 import Beauty from "../images/Beauty/1.jpg";
+import Luxury from "../images/Luxury/Luxury.jpg";
 
 const HomePage = () => {
   return (
@@ -46,7 +47,7 @@ const HomePage = () => {
           />
           <PageCard
             title={"New years dresses under $50"}
-            image={women}
+            image={Women}
             link={<Link to="/Women">Shop now</Link>}
           />
           <PageCard
@@ -57,14 +58,14 @@ const HomePage = () => {
           <PageCard
             title={"Send a holiday eGift Card"}
             image={
-              "https://images-na.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/01/GiftCards/2023/Q4/VX-2360_US_Holiday_LastMinGifting/VX-2360-US_Holiday_LastMinGifting_GW_CC_758X608._SY608_CB574056724_.jpg"
+              "https://www.campmor.com/cdn/shop/files/gift-cards_54f2b68e-089f-46c2-9f86-fec7a89006af.jpg?v=1701721723"
             }
             link={<Link to="/Gifts">Unlock instant holiday magic</Link>}
           />
           <PageCard
             title={"Luxury"}
             image={
-              "https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/I/91+z6fJ6x7L._AC_UL1000_FMwebp_QL65_.jpg"
+              Luxury
             }
             link={<Link to="/Luxury">Shop more products</Link>}
           />
