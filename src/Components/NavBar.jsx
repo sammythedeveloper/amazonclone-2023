@@ -6,6 +6,7 @@ import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./Firebase";
 import CartIcon from "./CartIcon";
+import { BsPersonFill } from "react-icons/bs";
 
 const NavBar = () => {
   const [{ user }] = useStateValue();
@@ -13,16 +14,16 @@ const NavBar = () => {
   const [searchActive, setSearchActive] = useState(false);
   const inputRef = useRef(null);
 
-  const navLinks = ["Shop", "About", "FAQ", "Gift Card", "Contact"];
+  const navLinks = ["Shop", "About", "FAQ", "Contact"];
 
   return (
-    <header className="w-full bg-white shadow-md font-sans ">
+    <header className="w-full bg-white shadow-md font-sans sticky top-0 z-50">
       {/* Desktop Header */}
-      <div className="hidden md:flex items-center justify-between max-w-[1600px] mx-auto px-6 py-4 min-h-[120px] ">
+      <div className="hidden md:flex items-center justify-between max-w-[1600px] mx-auto px-6 py-4 min-h-[120px]  ">
         {/* Logo */}
         <Link to="/" className="flex flex-col">
           <span className="text-3xl font-normal text-black">Nova Shop</span>
-          <span className="text-sm font-light text-gray-600">
+          <span className="text-sm font-light text-red-500 hover:text-gray-400  ">
             Funky Tech Accessories
           </span>
         </Link>
@@ -33,7 +34,7 @@ const NavBar = () => {
             <Link
               key={link}
               to={`/${link.replace(/ /g, "")}`}
-              className="text-black hover:text-red-600 font-light text-sm"
+              className="text-black hover:text-gray-400 font-light text-sm"
             >
               {link}
             </Link>
@@ -72,8 +73,9 @@ const NavBar = () => {
         <div className="flex items-center space-x-6 ">
           {user ? (
             <div className="flex items-center space-x-4  cursor-pointer">
+              <BsPersonFill />
               <span className="text-blue-600 font-light">
-                Hi , {user.email.slice(0, 4)}
+               {user.email.slice(0, 4)}
               </span>
               <span
                 className="text-black font-light hover:text-red-600"
@@ -131,7 +133,7 @@ const NavBar = () => {
               <Link
                 key={link}
                 to={`/${link.replace(/ /g, "")}`}
-                className="text-black hover:text-red-600 font-extralight text-2xl"
+                className="text-black hover:text-red-600 font-extralight text-xl"
               >
                 {link}
               </Link>
