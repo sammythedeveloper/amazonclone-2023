@@ -35,10 +35,10 @@ const homeAndKitchenProducts = [
   },
   {
     id: "5",
-    title: "NutriChef Non-Stick Kitchen Oven Baking Pans-Deluxe",
+    title: "OPPO Find N5 Misty White",
     rating: 3,
-    price: 19,
-    image: require("../../images/Home&Kitchen/17.jpg"),
+    price: 2779,
+    image: require("../../images/Smartphones/oppo.jpg"),
   },
   {
     id: "6",

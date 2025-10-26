@@ -86,7 +86,7 @@ const HomePage = () => {
             <img
               src={cat.image}
               alt={cat.title}
-              className="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
+              className="w-full h-64 md:h-72 object-contain p-2"
             />
             <div className="p-4 flex flex-col space-y-1">
               <h3 className="text-lg font-semibold text-gray-800">
@@ -120,7 +120,7 @@ const HomePage = () => {
           About Nova Shop
         </motion.h2>
         <motion.p
-          className="text-black text-2xl font-extralight leading-relaxed max-w-3xl mx-auto"
+          className="text-black text-2xl font-extralight leading-relaxed max-w-3xl mx-auto #About "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
