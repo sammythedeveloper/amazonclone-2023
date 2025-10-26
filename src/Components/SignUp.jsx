@@ -31,13 +31,33 @@ function Login() {
 
   return (
     <div className=" flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="text-[48px] sm:text-[100px] flex justify-center font-extrabold">
+        <p>Nova Shop</p>
+      </div>
       <Link to="/">
-        <img
-          height={150}
-          width={150}
-          className="login__logo"
-          src="https://www.nuvita.com/wp-content/uploads/2018/07/amazon-logo-vector-png-amazon-logo-vector-512.png"
-        />
+        <svg
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#000000"
+          height="150"
+          width="150"
+        >
+          <rect x="244" y="361.124" width="24" height="84.784" />
+          <rect x="131.472" y="433.924" width="249.04" height="24" />
+          <rect y="54.076" width="512" height="315.04" />
+          <path
+            fill="#E21B1B"
+            d="M317.304,157.588h-15.896v-35.872c0-4.384-3.56-7.944-7.944-7.944h-74.832
+           c-4.384,0-7.944,3.56-7.944,7.944v35.872h-15.896v-35.872c0-13.144,10.696-23.84,23.84-23.84h74.832
+           c13.144,0,23.84,10.696,23.84,23.84V157.588z"
+          />
+          <path
+            fill="#E21B1B"
+            d="M164.616,148.276l-35.72,172.496H383.2l-35.72-172.496H164.616z"
+          />
+          <rect x="132.784" y="194.084" width="246.528" height="15.896" />
+        </svg>
       </Link>
       <div className=" w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div className="p-6 space-y-6 sm:p-8">
@@ -73,7 +93,7 @@ function Login() {
               />
             </div>
             <button
-              className=" w-full text-white bg-orange-400 hover:bg-orange-500 font-medium text-sm py-2.5 rounded-lg px-5 text-center  "
+              className=" w-full text-white bg-red-500 hover:bg-red-600 font-medium text-sm py-2.5 rounded-lg px-5 text-center  "
               type="submit"
               onClick={register}
             >
@@ -84,7 +104,7 @@ function Login() {
               Already have an account?{" "}
               <Link
                 to="/Signin"
-                className=" font-medium text-primary-600 hover:underline "
+                className=" font-medium text-primary-600 hover:underline text-red-600 "
               >
                 Login here
               </Link>

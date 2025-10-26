@@ -6,7 +6,7 @@ import { auth } from "./Firebase";
 import MenuIcon from "@mui/icons-material/Menu";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import { Link } from "react-router-dom";
-import Logo from '../images/amazon.png'
+import Logo from '../images/shop.png'
 
 
 const NavBar = () => {
@@ -19,13 +19,14 @@ const NavBar = () => {
 
   return (
     <header className="min-w-[1200px]">
-      <div className="flex bg-amazonclone-header text-white h-[60px]">
+      <div className="flex bg-black text-white h-[120px]">
     
 
         <div className="flex items-center m-4 ">
+          <div><p>NovaShop</p></div>
           <Link to="/">
             <img
-              className="h-[35px] w-[100px] m-2"
+              className="h-[70px] w-[70px]"
               src={Logo}
             />
           </Link>
@@ -34,10 +35,6 @@ const NavBar = () => {
             <div className="text-xs xl:small">Deliver to,</div>
             <div className="text-sm xl:text-base font-bold"> {!user ? "Login" : user.email}</div>
           </div>
-        </div>
-
-        <div className="flex grow relative items-center ">
-          <Search />
         </div>
         {/* right */}
         <div className="flex items-center m-4">
@@ -65,25 +62,6 @@ const NavBar = () => {
             </div>
             </Link>
         </div>
-      </div>
-      <div className=" flex  bg-amazonclone-nav text-white space-x-3 text-xs xl:text-sm p-2 pl-6 ">
-        <MenuIcon/>
-        <div>All</div>
-        <div>Medical Care</div>
-        <div>Groceries</div>
-        <div>Best Sellers</div>
-        <div>Amazon Basics</div>
-        <div>Registry</div>
-        <div>Tody's Deals</div>
-        <div>New Releases</div>
-        <div>Prime</div>
-        <div>Customer Service</div>
-        <div>Music</div>
-        <div>Book</div>
-        <div>Pharmacy</div>
-        <div>Amazon Home</div>
-        <div>Fashion</div>
-        <div> Gift Cards</div>
       </div>
     </header>
   );
