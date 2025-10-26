@@ -19,6 +19,7 @@ import Luxury from "./Components/Productpages/Luxury";
 import Payment from "./Components/Payment";
 import Orders from "./Components/Orders";
 import Footer from "./Components/Footer";
+import ProtectedRoute from "./ProtectedRoute";
 
 const key = loadStripe(
   "pk_test_51OMyLMHyEXHJUIn2SiwK4uPGQ7UCWEHnnLHu00idi1F21aJF5sL2fjawdt9zjKHbLuCK7aGctzxINMaheR70WQr500uAwonRLZ"
@@ -59,17 +60,17 @@ const App = () => {
       </Routes>
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <NavBar />
-              <HomePage />
-              <Footer/>
-            </>
-          }
-        />
-      </Routes>
+  <Route
+    path="/"
+    element={
+      <ProtectedRoute>
+        <NavBar />
+        <HomePage />
+        <Footer />
+      </ProtectedRoute>
+    }
+  />
+</Routes>
 
       <Routes>
         <Route
@@ -77,6 +78,7 @@ const App = () => {
           element={
             <>
               <SignUp />
+              <Footer/>
             </>
           }
         />
@@ -88,6 +90,7 @@ const App = () => {
           element={
             <>
               <Signin />
+              <Footer/>
             </>
           }
         />
