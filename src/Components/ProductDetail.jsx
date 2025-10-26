@@ -1,43 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStateValue } from "./StateProvider";
-import StarRateIcon from '@mui/icons-material/StarRate';
+import StarRateIcon from "@mui/icons-material/StarRate";
 
-const ProductDetail = ({ id, title, image, rating, price }) => {
+const ProductDetail = ({ id, title, image, rating: initialRating, price }) => {
   const [{ basket }, dispatch] = useStateValue();
+  
+  // Local state for user rating
+  const [rating, setRating] = useState(initialRating);
 
   const addToBasket = () => {
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
-        id: id,
-        title: title,
-        image:image,
-        price: price,
-        rating: rating,
+        id,
+        title,
+        image,
+        price,
+        rating,
       },
     });
   };
 
+  // Function to handle star click
+  const handleRatingClick = (index) => {
+    setRating(index + 1);
+  };
+
   return (
-    <div className="h-[520px] bg-white z-30 m-3  ">
-      <div className="h-[300px] m-4">
-        <img className="h-[100%] object-cover " src={image} />
+    <div className="bg-white rounded-2xl shadow-md m-3 flex flex-col hover:shadow-lg transition-shadow duration-300">
+      {/* Image */}
+      <div className="w-full">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-64 md:h-72 object-contain p-2"
+        />
       </div>
-      <div className="text-lg xl:text-xl font-light ml-4 mt-4  ">{title}</div>
-      <div className=" flex text-xs xl:text:sm text-orange-500 ml-4">   {Array(rating)
+
+      {/* Product Info */}
+      <div className="flex-1 p-4 flex flex-col justify-between">
+        <h3 className="text-sm font-medium text-gray-800 mb-2">
+          {title}
+        </h3>
+
+        {/* Rating */}
+        <div className="flex mb-2 text-orange-400 cursor-pointer">
+          {Array(5)
             .fill()
-            .map(() => (
-              <p className=" fill-orange-500 text-orange-500 "><StarRateIcon/> </p>
-            ))}</div>   
-      <div className="text-xs xl:text:sm text-black ml-4">
-        <p>${price}</p>
+            .map((_, i) => (
+              <StarRateIcon
+                key={i}
+                className={i < rating ? "text-orange-400" : "text-gray-300"}
+                onClick={() => handleRatingClick(i)}
+              />
+            ))}
+        </div>
+
+        {/* Price */}
+        <p className="text-black font-normal text-sm mb-3">${price}</p>
+
+        {/* Add to Cart */}
+        <button
+          className="w-full py-2 bg-blue-400 rounded-lg border-2 hover:bg-blue-500 text-white text-sm font-light"
+          onClick={addToBasket}
+        >
+          Add to Cart
+        </button>
       </div>
-      <button
-        className="  w-32 h-7 ml-4 mt-3 text-sm bg-yellow-400 rounded-lg border-2 hover:border-black "
-        onClick={addToBasket}
-      >
-        Add to cart
-      </button>
     </div>
   );
 };

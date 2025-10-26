@@ -1,76 +1,81 @@
 import React from "react";
-import { Carousel, CarouselTrending } from "../";
+import { Carousel } from "../";
 import ProductDetail from "../ProductDetail";
-import banner from '../../images/banner_image_2.jpg';
 
-// Array to store product data
+// Array of products
 const homeAndKitchenProducts = [
-  {
-    id: "1",
-    title: "Melitta Aroma Tocco PLUS with both Iced Coffee and Hot Drip Coffee",
-    rating: 4,
-    price: 129,
-    image: require("../../images/Home&Kitchen/13.jpg"), // Updated path for image
-  },
+
   {
     id: "2",
-    title: "24-Piece Black Silverware Set with Steak Knives",
+    title: "iPhone Air super thin. Strikingly light.Shockingly strong.",
     rating: 5,
-    price: 16.99,
-    image: require("../../images/Home&Kitchen/14.jpg"), // Updated path for image
+    price: 1449,
+    image: require("../../images/Smartphones/iphoneAir.jpg"),
+  },
+  {
+    id: "1",
+    title: "Samsung Galaxy S25 Ultra (512GB, 12GB RAM), Galaxy AI, 6.9”",
+    rating: 4,
+    price: 1484,
+    image: require("../../images/Smartphones/samsung1.jpg"),
   },
   {
     id: "3",
-    title: "JoyJolt JoyFul 24pc(12 Airtight, Freezer Safe Food Storage Containers)",
+    title: "Samsung Galaxy Z Flip5 256GB Graphite (Renewed)",
     rating: 5,
-    price: 38,
-    image: require("../../images/Home&Kitchen/15.jpg"), // Updated path for image
+    price: 789,
+    image: require("../../images/Smartphones/samsung flip.jpg"),
   },
   {
     id: "4",
-    title: "Dealusy 4 Set Glass Cups with Lids and Straws 16 oz",
+    title: "Google Pixel 9a - 128 GB -Unlocked Android Smartphone with AI Camera, All-Day Battery and Powerful Security - Obsidian",
     rating: 5,
-    price: 16.99,
-    image: require("../../images/Home&Kitchen/16.jpg"), // Updated path for image
+    price: 999,
+    image: require("../../images/Smartphones/Pixel10(3).jpg"),
   },
   {
     id: "5",
     title: "NutriChef Non-Stick Kitchen Oven Baking Pans-Deluxe",
     rating: 3,
     price: 19,
-    image: require("../../images/Home&Kitchen/17.jpg"), // Updated path for image
+    image: require("../../images/Home&Kitchen/17.jpg"),
   },
   {
     id: "6",
     title: "PRAKI Airtight Food Storage Container Set",
     rating: 4,
     price: 24,
-    image: require("../../images/Home&Kitchen/18.jpg"), // Updated path for image
+    image: require("../../images/Home&Kitchen/18.jpg"),
   },
   {
     id: "7",
     title: "StepRite Kitchen Mats, 2PCS Kitchen Rugs, Cushioned Anti Fatigue Kitchen Mats for Floor",
     rating: 5,
     price: 24.99,
-    image: require("../../images/Home&Kitchen/19.jpg"), // Updated path for image
+    image: require("../../images/Home&Kitchen/19.jpg"),
   },
   {
     id: "8",
     title: "PHILIPS 3200 Series Fully Automatic Espresso Machine",
     rating: 4,
     price: 79,
-    image: require("../../images/Home&Kitchen/20.jpg"), // Updated path for image
+    image: require("../../images/Home&Kitchen/20.jpg"),
   },
 ];
 
 const HomeAndKitchen = () => {
   return (
-    <div className="bg-amazonclone-background">
-      <div className="min-w-[1000px] max-w-[2000px] m-auto">
-        <Carousel />
-
-        <div className="grid grid-cols-3 xl:grid-cols-4 -mt-80">
-          {/* Loop through the homeAndKitchenProducts array to render each product dynamically */}
+    <div className="bg-gray-50 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+            Phones
+          </h2>
+          <p className="text-gray-600 mt-2 text-sm md:text-base">
+            Discover the latest smartphones, top brands, and unbeatable deals.
+          </p>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {homeAndKitchenProducts.map((product) => (
             <ProductDetail
               key={product.id}
@@ -78,15 +83,12 @@ const HomeAndKitchen = () => {
               title={product.title}
               rating={product.rating}
               price={product.price}
-              image={product.image} // Passing dynamically imported image
+              image={product.image}
+              className="w-full h-64 md:h-72 object-contain"
             />
           ))}
         </div>
-        <div className="m-3 pt-8">
-          <img className="xl:hidden" src={banner} />
-        </div>
-
-        <CarouselTrending />
+        <Carousel />
       </div>
     </div>
   );

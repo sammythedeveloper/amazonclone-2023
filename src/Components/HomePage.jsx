@@ -3,23 +3,25 @@ import { Carousel } from "./";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import kitchen from "../images/Home&Kitchen/7.jpg";
-import top from "../images/Best-seller/3.jpg";
-import Women from "../images/Women/1.jpg";
+import Phones from "../images/Smartphones/iPhone.jpg";
+import Laptops from "../images/Best-seller/3.jpg";
+import HeadPhones from "../images/Women/1.jpg";
 import Gaming from "../images/Gaming/out.jpg";
-import Beauty from "../images/Beauty/1.jpg";
-import Luxury from "../images/Luxury/Luxury.jpg";
+import Cameras from "../images/Beauty/1.jpg";
+import Accessories from "../images/Luxury/Luxury.jpg";
+import SmartWatches from "../images/Luxury/Luxury.jpg";
+import SmartLifestyle from "../images/Luxury/Luxury.jpg";
 
 const categories = [
   {
     title: "Phones",
-    image: kitchen,
+    image: Phones,
     link: "/HomeandKitchen",
     subtitle: "Shop the Winter Sale",
   },
   {
     title: "Laptops",
-    image: top,
+    image: Laptops,
     link: "/TopDeal",
     subtitle: "See all deals",
   },
@@ -31,31 +33,31 @@ const categories = [
   },
   {
     title: "HeadPhones",
-    image: Women,
+    image: HeadPhones,
     link: "/Women",
     subtitle: "Shop now",
   },
   {
     title: "Cameras",
-    image: Beauty,
+    image: Cameras,
     link: "/Beauty",
     subtitle: "Glow up this season",
   },
   {
     title: "Accessories",
-    image: Luxury,
+    image: Accessories,
     link: "/Luxury",
     subtitle: "Shop more products",
   },
   {
     title: "Smart Watches",
-    image: Luxury,
+    image: SmartWatches,
     link: "/Luxury",
     subtitle: "Shop more products",
   },
   {
     title: "Smart Lifestyle",
-    image: Luxury,
+    image: SmartLifestyle,
     link: "/Luxury",
     subtitle: "Shop more products",
   },
@@ -64,10 +66,7 @@ const categories = [
 const HomePage = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Hero Carousel */}
       <Carousel />
-
-      {/* Featured Products */}
       <motion.h2
         className="text-2xl md:text-4xl font-extralight text-center m-10"
         initial={{ opacity: 0, y: 20 }}
