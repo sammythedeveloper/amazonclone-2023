@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-600 text-center p-16 mt-auto">
+    <footer className="bg-gray-100 text-gray-600 text-center p-16 mt-16 ">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-6">
         {/* Left section */}
         <p className="text-sm mb-4 sm:mb-0">

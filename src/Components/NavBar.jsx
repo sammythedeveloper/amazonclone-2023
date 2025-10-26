@@ -1,68 +1,97 @@
-import { PiShoppingCartSimpleLight } from "react-icons/pi";
-import Search from "./Search";
-import React, { useState } from "react";
-import { useStateValue } from "./StateProvider";
-import { auth } from "./Firebase";
-import MenuIcon from "@mui/icons-material/Menu";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import { Link } from "react-router-dom";
-import Logo from '../images/shop.png'
-
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { GiShoppingBag } from "react-icons/gi";
+import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 
 const NavBar = () => {
-  const [{ basket, user }, dispatch] = useStateValue();
-  const handleAuthentication = () => {
-    if (user) {
-      auth.signOut();
-    }
-  };
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
+
+  const navLinks = ['Shop', 'About', 'FAQ', 'Gift Card', 'Contact'];
 
   return (
-    <header className="min-w-[1200px]">
-      <div className="flex bg-black text-white h-[120px]">
-    
+    <header className="w-full bg-white shadow-md font-sans">
+      {/* Desktop Header */}
+      <div className="hidden md:flex items-center justify-between max-w-[1600px] mx-auto px-6 py-4">
+        {/* Logo */}
+        <Link to="/" className="text-2xl font-extralight text-black">Nova Shop</Link>
 
-        <div className="flex items-center m-4 ">
-          <div><p>NovaShop</p></div>
-          <Link to="/">
-            <img
-              className="h-[70px] w-[70px]"
-              src={Logo}
-            />
-          </Link>
-          <LocationOnOutlinedIcon />
-          <div className="pr-4 pl-4">
-            <div className="text-xs xl:small">Deliver to,</div>
-            <div className="text-sm xl:text-base font-bold"> {!user ? "Login" : user.email}</div>
-          </div>
+        {/* Navigation Links */}
+        <nav className="flex space-x-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link}
+              to={`/${link.replace(/ /g, '')}`}
+              className="text-black hover:text-red-600 font-light text-sm"
+            >
+              {link}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Search */}
+        <div className="flex items-center border-b border-gray-400 hover:border-red-600 px-2">
+          <input
+            type="text"
+            placeholder={searchActive ? 'Search...' : ''}
+            className={`outline-none bg-transparent transition-all duration-300 ${
+              searchActive ? 'w-64 px-2 py-1' : 'w-0'
+            }`}
+            onFocus={() => setSearchActive(true)}
+            onBlur={() => setSearchActive(false)}
+          />
+          {!searchActive && <span className="text-gray-500">🔍</span>}
         </div>
-        {/* right */}
-        <div className="flex items-center m-4">
-          <Link to={!user && "/Signin"}   >
-          <div onClick={handleAuthentication} className="pr-4 pl-4">
-            <div className="text-xs xl:small">
-                Hello,
-                {!user ? "" : user.email}
-                <br />
-                {user ? "Sign out" : "Sign In"}
-            </div>
-              <div className="text-sm xl:text-base font-bold">Account& Lists</div>
-            </div>
-            </Link>
-          <div className="pr-4 pl-4">
-            <div className="text-xs xl:small">Returns</div>
-            <div className="text-sm xl:text-base font-bold">& Orders</div>
-          </div>
-          <Link to="/Checkout" >
-          <div className="flex pr-3 pl-3">
-            <PiShoppingCartSimpleLight className="h-[48px] " />
-            <div className="mt-4 pl-1 text-xs xl:sm font-bold">
-              {basket.length} Cart
-            </div>
-            </div>
-            </Link>
+
+        {/* Account & Cart */}
+        <div className="flex items-center space-x-6">
+          <Link to="/Signin" className="font-medium text-black hover:text-red-600">Sign In</Link>
+          <Link to="/Checkout" className="flex items-center space-x-1 text-black hover:text-red-600">
+          <GiShoppingBag className="text-2xl" />
+          </Link>
         </div>
       </div>
+
+      {/* Mobile Header */}
+      <div className="flex md:hidden items-center justify-between px-4 py-3">
+        {/* Logo */}
+        <Link to="/" className="text-3xl font-extralight">NovaShop</Link>
+
+        {/* Cart & Hamburger */}
+        <div className="flex items-center space-x-4">
+          <Link to="/Checkout">
+            <GiShoppingBag className="text-2xl" />
+          </Link>
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <HiOutlineX className="text-2xl" /> : <HiOutlineMenu className="text-2xl" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden px-4 pb-4">
+          <nav className="flex flex-col space-y-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link}
+                to={`/${link.replace(/ /g, '')}`}
+                className="text-black hover:text-red-600 font-extralight text-2xl"
+              >
+                {link}
+              </Link>
+            ))}
+          </nav>
+          {/* Search */}
+          <div className="mt-4 border-b border-gray-400 hover:border-red-600 px-2">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full outline-none bg-transparent py-1"
+            />
+          </div>
+        </div>
+      )}
     </header>
   );
 };

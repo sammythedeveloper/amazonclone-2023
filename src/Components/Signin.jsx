@@ -9,16 +9,39 @@ import {
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // <-- error state
   const navigate = useNavigate();
 
   const signIn = (e) => {
     e.preventDefault();
+    setError(""); // reset previous errors
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         if (userCredential) navigate("/");
       })
-      .catch((error) => alert(error.message));
+      .catch((err) => {
+        // Map Firebase error codes to user-friendly messages
+        let friendlyMessage = "";
+        switch (err.code) {
+          case "auth/invalid-email":
+            friendlyMessage = "Please enter a valid email address.";
+            break;
+          case "auth/user-disabled":
+            friendlyMessage = "This account has been disabled.";
+            break;
+          case "auth/user-not-found":
+            friendlyMessage = "No account found with this email.";
+            break;
+          case "auth/wrong-password":
+            friendlyMessage = "Incorrect password. Please try again.";
+            break;
+          default:
+            friendlyMessage = "Incorrect Password";
+        }
+        setError(friendlyMessage);
+      });
   };
+  
 
   const register = (e) => {
     e.preventDefault();
@@ -30,7 +53,7 @@ function Login() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <div className="min-h-screen flex flex-col md:flex-row justify-between">
       {/* LEFT SECTION */}
       <div className="flex-1 flex flex-col justify-center items-center bg-gradient-to-br from-red-500 to-red-700 text-white p-10">
         <h1 className="text-5xl sm:text-7xl font-extrabold mb-6 tracking-tight">
@@ -102,6 +125,7 @@ function Login() {
               className="w-full p-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="••••••••"
             />
+            {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
           </div>
 
           {/* Buttons */}
