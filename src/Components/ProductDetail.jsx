@@ -4,64 +4,55 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 
 const ProductDetail = ({ id, title, image, rating: initialRating, price }) => {
   const [{ basket }, dispatch] = useStateValue();
-  
-  // Local state for user rating
   const [rating, setRating] = useState(initialRating);
 
   const addToBasket = () => {
     dispatch({
       type: "ADD_TO_BASKET",
-      item: {
-        id,
-        title,
-        image,
-        price,
-        rating,
-      },
+      item: { id, title, image, price, rating },
     });
   };
 
-  // Function to handle star click
-  const handleRatingClick = (index) => {
-    setRating(index + 1);
-  };
-
   return (
-    <div className="bg-white rounded-2xl shadow-md m-3 flex flex-col hover:shadow-lg transition-shadow duration-300">
+    <div className="bg-white rounded-xl shadow-md m-2 sm:m-3 flex flex-col hover:shadow-lg transition-shadow duration-300 max-w-[300px] mx-auto">
       {/* Image */}
       <div className="w-full">
         <img
           src={image}
           alt={title}
-          className="w-full h-64 md:h-72 object-contain p-2"
+          className="w-full h-48 sm:h-60 md:h-72 object-contain p-2"
         />
       </div>
 
-      {/* Product Info */}
-      <div className="flex-1 p-4 flex flex-col justify-between">
-        <h3 className="text-sm font-medium text-gray-800 mb-2">
+      {/* Info */}
+      <div className="flex-1 p-3 sm:p-4 flex flex-col justify-between">
+        <h3 className="text-xs sm:text-sm md:text-base font-semibold text-gray-800 mb-1 sm:mb-2 line-clamp-2">
           {title}
         </h3>
 
         {/* Rating */}
-        <div className="flex mb-2 text-orange-400 cursor-pointer">
+        <div className="flex mb-1 sm:mb-2 text-orange-400">
           {Array(5)
             .fill()
             .map((_, i) => (
               <StarRateIcon
                 key={i}
-                className={i < rating ? "text-orange-400" : "text-gray-300"}
-                onClick={() => handleRatingClick(i)}
+                className={`${
+                  i < rating ? "text-orange-400" : "text-gray-300"
+                } text-sm sm:text-base`}
+                onClick={() => setRating(i + 1)}
               />
             ))}
         </div>
 
         {/* Price */}
-        <p className="text-black font-normal text-sm mb-3">${price}</p>
+        <p className="text-gray-900 font-bold mb-2 text-sm sm:text-base">
+          ${price}
+        </p>
 
-        {/* Add to Cart */}
+        {/* Button */}
         <button
-          className="w-full py-2 bg-blue-400 rounded-lg border-2 hover:bg-blue-500 text-white text-sm font-light"
+          className="w-full py-1.5 sm:py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-xs sm:text-sm"
           onClick={addToBasket}
         >
           Add to Cart

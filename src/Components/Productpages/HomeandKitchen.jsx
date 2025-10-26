@@ -42,24 +42,24 @@ const homeAndKitchenProducts = [
   },
   {
     id: "6",
-    title: "PRAKI Airtight Food Storage Container Set",
+    title: "Nothing Phone (2a) 12+256GB - Handy ohne vertrag mit Nothing OS 2.5 -",
     rating: 4,
-    price: 24,
-    image: require("../../images/Home&Kitchen/18.jpg"),
+    price: 524,
+    image: require("../../images/Smartphones/Nothing.jpg"),
   },
   {
     id: "7",
-    title: "StepRite Kitchen Mats, 2PCS Kitchen Rugs, Cushioned Anti Fatigue Kitchen Mats for Floor",
+    title: "ONEPLUS OnePlus 10 Pro | 5G Android Smartphone | 8GB+128GB | Unlocked | Triple Camera co-Developed with Hasselblad | Volcanic Black",
     rating: 5,
-    price: 24.99,
-    image: require("../../images/Home&Kitchen/19.jpg"),
+    price: 399,
+    image: require("../../images/Smartphones/onePlus.jpg"),
   },
   {
     id: "8",
-    title: "PHILIPS 3200 Series Fully Automatic Espresso Machine",
+    title: "Samsung Galaxy Z Fold7, 256GB, Jet Black (CAD Version & Warranty) - AI Smartphone, Snapdragon 8 Elite, 200MP, Foldable Dynamic AMOLED Display, Mult-Tasking w/Galaxy AI",
     rating: 4,
-    price: 79,
-    image: require("../../images/Home&Kitchen/20.jpg"),
+    price: 2479,
+    image: require("../../images/Smartphones/zfold.jpg"),
   },
 ];
 
@@ -75,7 +75,7 @@ const HomeAndKitchen = () => {
             Discover the latest smartphones, top brands, and unbeatable deals.
           </p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
           {homeAndKitchenProducts.map((product) => (
             <ProductDetail
               key={product.id}
@@ -88,8 +88,8 @@ const HomeAndKitchen = () => {
             />
           ))}
         </div>
-        <Carousel />
       </div>
+      <Carousel />
     </div>
   );
 };
