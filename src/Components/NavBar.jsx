@@ -5,6 +5,7 @@ import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./Firebase";
+import CartIcon from "./CartIcon";
 
 const NavBar = () => {
   const [{ user }] = useStateValue();
@@ -68,7 +69,7 @@ const NavBar = () => {
         </div>
 
         {/* Account & Cart */}
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center space-x-6 ">
           {user ? (
             <div className="flex items-center space-x-4  cursor-pointer">
               <span className="text-blue-600 font-light">
@@ -78,7 +79,7 @@ const NavBar = () => {
                 className="text-black font-light hover:text-red-600"
                 onClick={() => auth.signOut()}
               >
-                  Sign Out
+                Sign Out
               </span>
             </div>
           ) : (
@@ -96,12 +97,7 @@ const NavBar = () => {
           >
             Orders
           </Link>
-          <Link
-            to="/Checkout"
-            className="flex items-center space-x-1 text-black hover:text-red-600"
-          >
-            <GiShoppingBag className="text-2xl" />
-          </Link>
+          <CartIcon />
         </div>
       </div>
 
