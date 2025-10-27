@@ -2,7 +2,7 @@ import React from "react";
 import { Carousel, Category, CarouselBooks } from "../";
 import { Link } from "react-router-dom";
 import ProductDetail from "../ProductDetail";
-import banner from '../../images/banner_image_2.jpg'
+import banner from "../../images/banner_image_2.jpg";
 
 const Gift = () => {
   return (
@@ -87,7 +87,7 @@ const Gift = () => {
             price={69.99}
           />
           <div className="m-3 pt-8">
-            <img className="xl:hidden" src={banner }  />
+            <img className="xl:hidden" src={banner} />
           </div>
         </div>
       </div>

@@ -1,10 +1,9 @@
 import React from "react";
 import { Carousel } from "../";
 import ProductDetail from "../ProductDetail";
-import banner from '../../images/banner_image_2.jpg';
 
 // Array to store product data
-const officeProducts = [
+const Gamings = [
   {
     id: "41",
     title: "FLEXISPOT 35in Standing Desk Converter Height Adjustable Sit",
@@ -63,32 +62,35 @@ const officeProducts = [
   },
 ];
 
-const Office = () => {
+const Gaming = () => {
   return (
-    <div className="bg-amazonclone-background">
-      <div className="min-w-[1000px] max-w-[2000px] m-auto">
-        <Carousel />
-
-        <div className="grid grid-cols-3 xl:grid-cols-4 -mt-80">
-          {/* Loop through the officeProducts array to render each product dynamically */}
-          {officeProducts.map((product) => (
-            <ProductDetail
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              rating={product.rating}
-              price={product.price}
-              image={product.image} // Passing dynamically imported image
-            />
-          ))}
-
-          <div className="m-3 pt-8">
-            <img className="xl:hidden" src={banner} />
-          </div>
-        </div>
+    <div className="bg-gray-50 min-h-screen">
+    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          Phones
+        </h2>
+        <p className="text-gray-600 mt-2 text-sm md:text-base">
+          Discover the latest smartphones, top brands, and unbeatable deals.
+        </p>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
+        {Gamings.map((product) => (
+          <ProductDetail
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            rating={product.rating}
+            price={product.price}
+            image={product.image}
+            className="w-full h-64 md:h-72 object-contain"
+          />
+        ))}
       </div>
     </div>
+    <Carousel />
+  </div>
   );
 };
 
-export default Office;
+export default Gaming;

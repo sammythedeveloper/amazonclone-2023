@@ -63,7 +63,7 @@ const homeAndKitchenProducts = [
   },
 ];
 
-const HomeAndKitchen = () => {
+const Phones = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-12">
@@ -94,4 +94,4 @@ const HomeAndKitchen = () => {
   );
 };
 
-export default HomeAndKitchen;
+export default Phones;

@@ -8,11 +8,11 @@ import { loadStripe } from "@stripe/stripe-js";
 import SignUp from "./Components/SignUp";
 import Signin from "./Components/Signin";
 import Checkout from "./Components/Checkout";
-import HomeandKitchen from "./Components/Productpages/HomeandKitchen";
+import Phones from "./Components/Productpages/Phones";
 import Beauty from "./Components/Productpages/Beauty";
 import Clothing from "./Components/Productpages/Clothing";
 import Gifts from "./Components/Productpages/Gifts";
-import Office from "./Components/Productpages/Office";
+import Gaming from "./Components/Productpages/Gaming";
 import TopDeal from "./Components/Productpages/TopDeal";
 import Women from "./Components/Productpages/Women";
 import Luxury from "./Components/Productpages/Luxury";
@@ -20,6 +20,7 @@ import Payment from "./Components/Payment";
 import Orders from "./Components/Orders";
 import Footer from "./Components/Footer";
 import ProtectedRoute from "./ProtectedRoute";
+import ProductPage from "./Components/ProductPage";
 
 const key = loadStripe(
   "pk_test_51OMyLMHyEXHJUIn2SiwK4uPGQ7UCWEHnnLHu00idi1F21aJF5sL2fjawdt9zjKHbLuCK7aGctzxINMaheR70WQr500uAwonRLZ"
@@ -45,7 +46,7 @@ const App = () => {
     });
   }, []);
   return (
-    <Router basename={process.env.PUBLIC_URL} >
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route
           path="/Checkout"
@@ -53,24 +54,36 @@ const App = () => {
             <>
               <NavBar />
               <Checkout />
-              <Footer/>
+              <Footer />
             </>
           }
         />
       </Routes>
 
       <Routes>
-  <Route
-    path="/"
-    element={
-      <ProtectedRoute>
-        <NavBar />
-        <HomePage />
-        <Footer />
-      </ProtectedRoute>
-    }
-  />
-</Routes>
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <NavBar />
+            <HomePage />
+            <Footer />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* ✅ Dynamic category route */}
+      <Route
+        path="/category/:category"
+        element={
+          <ProtectedRoute>
+            <NavBar />
+            <ProductPage />
+            <Footer />
+          </ProtectedRoute>
+        }
+      />
+      </Routes>
 
       <Routes>
         <Route
@@ -78,7 +91,7 @@ const App = () => {
           element={
             <>
               <SignUp />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -90,7 +103,7 @@ const App = () => {
           element={
             <>
               <Signin />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -103,7 +116,7 @@ const App = () => {
             <>
               <NavBar />
               <Products />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -111,12 +124,12 @@ const App = () => {
 
       <Routes>
         <Route
-          path="/HomeandKitchen"
+          path="/Phones"
           element={
             <>
               <NavBar />
-              <HomeandKitchen />
-              <Footer/>
+              <Phones />
+              <Footer />
             </>
           }
         />
@@ -124,12 +137,12 @@ const App = () => {
 
       <Routes>
         <Route
-          path="/Beauty"
+          path="/Cameras"
           element={
             <>
               <NavBar />
               <Beauty />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -137,12 +150,12 @@ const App = () => {
 
       <Routes>
         <Route
-          path="/Clothing"
+          path="/SmartLifestyle"
           element={
             <>
               <NavBar />
               <Clothing />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -150,12 +163,12 @@ const App = () => {
 
       <Routes>
         <Route
-          path="/Gifts"
+          path="/SmartWatche"
           element={
             <>
               <NavBar />
               <Gifts />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -163,12 +176,12 @@ const App = () => {
 
       <Routes>
         <Route
-          path="/Office"
+          path="/Gaming"
           element={
             <>
               <NavBar />
-              <Office />
-              <Footer/>
+              <Gaming />
+              <Footer />
             </>
           }
         />
@@ -176,12 +189,12 @@ const App = () => {
 
       <Routes>
         <Route
-          path="/Luxury"
+          path="/Accessories"
           element={
             <>
               <NavBar />
               <Luxury />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -189,12 +202,12 @@ const App = () => {
 
       <Routes>
         <Route
-          path="/TopDeal"
+          path="/Laptops"
           element={
             <>
               <NavBar />
               <TopDeal />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -202,12 +215,12 @@ const App = () => {
 
       <Routes>
         <Route
-          path="/Women"
+          path="/HeadPhones"
           element={
             <>
               <NavBar />
               <Women />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -222,7 +235,7 @@ const App = () => {
               <Elements stripe={key}>
                 <Payment />
               </Elements>
-              <Footer/>
+              <Footer />
             </>
           }
         />
