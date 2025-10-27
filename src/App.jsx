@@ -8,19 +8,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import SignUp from "./Components/SignUp";
 import Signin from "./Components/Signin";
 import Checkout from "./Components/Checkout";
-import Phones from "./Components/Productpages/Phones";
-import Beauty from "./Components/Productpages/Beauty";
-import Clothing from "./Components/Productpages/Clothing";
-import Gifts from "./Components/Productpages/Gifts";
-import Gaming from "./Components/Productpages/Gaming";
-import TopDeal from "./Components/Productpages/TopDeal";
-import Women from "./Components/Productpages/Women";
-import Luxury from "./Components/Productpages/Luxury";
 import Payment from "./Components/Payment";
 import Orders from "./Components/Orders";
 import Footer from "./Components/Footer";
 import ProtectedRoute from "./ProtectedRoute";
 import ProductPage from "./Components/ProductPage";
+import ScrollToTop from "./Components/ScrollToTop";
 
 const key = loadStripe(
   "pk_test_51OMyLMHyEXHJUIn2SiwK4uPGQ7UCWEHnnLHu00idi1F21aJF5sL2fjawdt9zjKHbLuCK7aGctzxINMaheR70WQr500uAwonRLZ"
@@ -47,6 +40,7 @@ const App = () => {
   }, []);
   return (
     <Router basename={process.env.PUBLIC_URL}>
+      <ScrollToTop /> 
       <Routes>
         <Route
           path="/Checkout"
@@ -116,110 +110,6 @@ const App = () => {
             <>
               <NavBar />
               <Products />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-
-      <Routes>
-        <Route
-          path="/Phones"
-          element={
-            <>
-              <NavBar />
-              <Phones />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-
-      <Routes>
-        <Route
-          path="/Cameras"
-          element={
-            <>
-              <NavBar />
-              <Beauty />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-
-      <Routes>
-        <Route
-          path="/SmartLifestyle"
-          element={
-            <>
-              <NavBar />
-              <Clothing />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-
-      <Routes>
-        <Route
-          path="/SmartWatche"
-          element={
-            <>
-              <NavBar />
-              <Gifts />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-
-      <Routes>
-        <Route
-          path="/Gaming"
-          element={
-            <>
-              <NavBar />
-              <Gaming />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-
-      <Routes>
-        <Route
-          path="/Accessories"
-          element={
-            <>
-              <NavBar />
-              <Luxury />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-
-      <Routes>
-        <Route
-          path="/Laptops"
-          element={
-            <>
-              <NavBar />
-              <TopDeal />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-
-      <Routes>
-        <Route
-          path="/HeadPhones"
-          element={
-            <>
-              <NavBar />
-              <Women />
               <Footer />
             </>
           }

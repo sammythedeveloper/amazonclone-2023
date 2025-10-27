@@ -2,16 +2,19 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import productsData from "./ProductsData";
 import ProductDetail from "./ProductDetail";
+import { Carousel } from ".";
 
 // Mapping for dynamic category titles and descriptions
 const categoryInfo = {
   phones: {
     title: "Phones",
-    description: "Discover the latest smartphones, top brands, and unbeatable deals.",
+    description:
+      "Discover the latest smartphones, top brands, and unbeatable deals.",
   },
   laptops: {
     title: "Laptops",
-    description: "Explore high-performance laptops for work, gaming, and creativity.",
+    description:
+      "Explore high-performance laptops for work, gaming, and creativity.",
   },
   gaming: {
     title: "Gaming",
@@ -79,6 +82,7 @@ const ProductPage = () => {
           />
         ))}
       </div>
+      <Carousel />
     </div>
   );
 };
