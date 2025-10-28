@@ -9,7 +9,6 @@ import { db } from "./Firebase";
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
-
   const navigate = useNavigate();
 
   const getBasketTotal = (basket) =>
@@ -20,26 +19,23 @@ function Payment() {
 
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-
   const [succeeded, setSucceeded] = useState(false);
-  const [processing, setProcessing] = useState("");
-
-  const [clientSecret, setClientSecret] = useState(true);
+  const [processing, setProcessing] = useState(false);
+  const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    //generate the special stripe secret whhich allows us to charge a customer
     const getClientSecret = async () => {
-      const response = await axios({
-        method: "post",
-        //stripe expects the total in a currenceies subunits
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
-      });
+      const response = await axios.post(
+        `/payments/create?total=${getBasketTotal(basket) * 100}`
+      );
+      console.log("Axios response:", response.data);
       setClientSecret(response.data.clientSecret);
-    };
-    getClientSecret();
-  }, [basket]);
+      console.log("ClientSecret after set:", response.data.clientSecret);
+     
 
-  console.log("the secreat is >>>> ", clientSecret);
+    };
+    if (basket.length) getClientSecret();
+  }, [basket]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,17 +43,16 @@ function Payment() {
 
     const payload = await stripe
       .confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
+        payment_method: { card: elements.getElement(CardElement) },
       })
       .then(({ paymentIntent }) => {
+        // Save order in Firestore
         db.collection("users")
           .doc(user?.uid)
           .collection("orders")
           .doc(paymentIntent.id)
           .set({
-            basket: basket,
+            basket,
             amount: paymentIntent.amount,
             created: paymentIntent.created,
           });
@@ -66,9 +61,7 @@ function Payment() {
         setError(null);
         setProcessing(false);
 
-        dispatch({
-          type: "EMPTY_BASKET",
-        });
+        dispatch({ type: "EMPTY_BASKET" });
 
         navigate("/orders");
       });
@@ -80,26 +73,26 @@ function Payment() {
   };
 
   return (
-    <div className="payment">
-      <div className="">
-        <h1 className=" w-auto text-center p-[20px] font-semibold bg-slate-300 shadow-xl   " >
-          Checkout (<Link to="/checkout">{basket?.length}items</Link>)
+    <div className="bg-gray-50 min-h-screen px-4 sm:px-8 py-6">
+      <div className="max-w-7xl mx-auto flex flex-col gap-8">
+        {/* Header */}
+        <h1 className="text-3xl sm:text-3xl font-extralight text-center bg-gray-200 p-4  shadow-md">
+          Checkout (<Link to="/checkout">{basket?.length} items</Link>)
         </h1>
-        <div className="payment__section"></div>
-        <div className="payment__title">
-          <h3 className=" font-medium text " >Delivery Address</h3>
+
+        {/* Delivery Address */}
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <h3 className="text-2xl font-extralight mb-2">Delivery Address</h3>
+          <p className="text-black">{user?.email}</p>
+          <p className="text-black">Area 51</p>
+          <p className="text-black">Nevada, Las Vegas</p>
         </div>
-        <div className="">
-          <p>{user?.email}</p>
-          <p>Area 51</p>
-          <p>Nevada,Las Vegas</p>
-        </div>
-        <div className=" ">
-          <div className="m-10 font-medium text ">
-            <h3>Review items and delivery</h3>
-          </div>
-          <div className=" sm:w-[400px] md:w-[800px] ml-44 ">
-            {basket.map((item,key) => (
+
+        {/* Review Items */}
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <h3 className="text-xl font-extralight mb-4">Review items and delivery</h3>
+          <div className="space-y-4 text-xs text-black   ">
+            {basket.map((item, key) => (
               <CheckoutProduct
                 key={key}
                 id={item.id}
@@ -111,29 +104,35 @@ function Payment() {
             ))}
           </div>
         </div>
-        <div className=" bg-slate-300 shadow-xl">
-          <div className=" m-10 font-medium text ">
-            <h3>Payment Method</h3>
-          </div>
-          <div className=" sm:w-[400px] md:w-[800px] ml-52 ">
-            <form className="w-[300px] text-sm h-[150px] border-neutral-700  "  onSubmit={handleSubmit}>
-              <CardElement onChange={handleChange} />
-              <div className=" ">
-                <CurrencyFormat
-                  renderText={(value) => <h3>Order Total:{value}</h3>}
-                  decimalScale={2}
-                  value={getBasketTotal(basket)}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"$"}
-                />
-                <button  className="pl-2 pr-3 w-[180px] h-6 text-xs bg-yellow-400 rounded-lg hover:bg-green-400 "  disabled={processing || disabled || succeeded}>
-                  <span> {processing ? <p>Processing</p> : "Buy Now"}</span>
-                </button>
-              </div>
-              {error && <div>{error}</div>}
-            </form>
-          </div>
+
+        {/* Payment Method */}
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <h3 className="text-sm text-black  font-extralight mb-4">Payment Method</h3>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <CardElement
+              onChange={handleChange}
+              className="p-4 border rounded-lg shadow-sm"
+            />
+
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+              <CurrencyFormat
+                renderText={(value) => <h3 className="text-gray-800">Order Total: {value}</h3>}
+                decimalScale={2}
+                value={getBasketTotal(basket)}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"$"}
+              />
+              <button
+                className="w-full sm:w-auto px-6 py-2 bg-yellow-500 rounded-lg hover:bg-green-500 transition-colors font-medium "
+                disabled={processing || disabled || succeeded}
+              >
+                {processing ? "Processing..." : "Buy Now"}
+              </button>
+            </div>
+
+            {error && <div className="text-red-500 mt-2">{error}</div>}
+          </form>
         </div>
       </div>
     </div>

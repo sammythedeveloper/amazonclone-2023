@@ -71,9 +71,9 @@ const ProductPage = () => {
 
       {/* Product Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        {categoryData.map((item) => (
+        {categoryData.map((item, index) => (
           <ProductDetail
-            key={item.id}
+            key={item.id + index}
             id={item.id}
             title={item.title}
             desc={item.desc}

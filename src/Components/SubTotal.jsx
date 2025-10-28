@@ -17,9 +17,6 @@ function SubTotal() {
             <p>
               Subtotal({basket.length} items):<strong>{value}</strong>
             </p>
-            <small className="subtotal__gift">
-              <input type="checkbox" /> This order contains a gift
-            </small>
           </div>
         )}
         decimalScale={2}
@@ -28,8 +25,7 @@ function SubTotal() {
         thousandSeparator={true}
         prefix={"$"}
           />
-      <button className=" pl-2 pr-3 w-48 h-8 ml-2 mt-3 mr-4 text-xs bg-yellow-400 rounded-lg border-2 hover:border-black " onClick={(e) => navigate('/payment')} >Proceed to Checkout</button>
-      {/* <button className=" pl-2 pr-2 w-48 h-8 ml-2 mt-3  text-xs bg-white rounded-lg border-2 hover:border-black  "  onClick={(e) => navigate.goBack('/Checkout')} >Go back to cart</button> */}
+      <button className=" pl-2 pr-3 w-48 h-8 ml-2 mt-3 mr-4 text-xs  text-white bg-blue-500 hover:bg-green-500 rounded-lg " onClick={(e) => navigate('/payment')} >Proceed to Checkout</button>
     </div>
   );
 }
