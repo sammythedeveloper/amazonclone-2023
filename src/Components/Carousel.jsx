@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import Samsung from "../images/Carousel/samsung.png";
-import Apple from "../images/Carousel/apple.png";
+import { Link } from "react-router-dom";
+import phone2 from "../images/Carousel/samsung.png";
+import phone1 from "../images/Carousel/apple.png";
 import Headphones from "../images/Carousel/headphones.png";
 import Watches from "../images/Carousel/smart-watch.png";
 import Laptop from "../images/Carousel/laptop.png";
@@ -10,20 +11,18 @@ import SmartTV from "../images/Carousel/smart-tv.png";
 import Camera from "../images/Carousel/camera.png";
 import Desksetup from "../images/Carousel/desksetup.png";
 
-// Replace these with your own tech logos
+// Map logos to category routes
 const logos = [
-  { src: Apple, name: "Apple" },
-  { src: Samsung, name: "Samsung" }, 
-  { src: Headphones, name: "Headphones" }, 
-  {src: Watches, name: "Watches",}, 
-  { src: Laptop, name: "Computer", }, 
-  { src: Gaming, name: "Gaming", }, 
-  { src: Accessories, name: "Accessories", }, 
-  { src: SmartTV, name: "SmartTV", }, 
-  { src: Camera, name: "Cameras", }, 
-  { src: Desksetup, name: "Desksetup", }, 
-  
- 
+  { src: phone1, name: "Phones", link: "/category/phones" },
+  { src: phone2, name: "Phones", link: "/category/phones" },
+  { src: Headphones, name: "Headphones", link: "/category/headphones" },
+  { src: Watches, name: "Watches", link: "/category/watches" },
+  { src: Laptop, name: "Laptops", link: "/category/laptops" },
+  { src: Gaming, name: "Gaming", link: "/category/gaming" },
+  { src: Accessories, name: "Accessories", link: "/category/accessories" },
+  { src: SmartTV, name: "Smart TV", link: "/category/smartlife" },
+  { src: Camera, name: "Cameras", link: "/category/cameras" },
+  { src: Desksetup, name: "Desk Setup", link: "/category/accessories" },
 ];
 
 export default function AnimatedLogoCarousel() {
@@ -35,27 +34,28 @@ export default function AnimatedLogoCarousel() {
 
       <motion.div
         className="flex w-max"
-        animate={{ x: ["0%", "-50%"] }} // will be improved below
+        animate={{ x: ["0%", "-50%"] }}
         transition={{
           repeat: Infinity,
           ease: "linear",
-          duration: 20, // adjust speed
+          duration: 20,
         }}
       >
-        {/* Duplicate logos twice for seamless looping */}
+        {/* Duplicate logos for seamless loop */}
         {[...logos, ...logos].map((logo, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 2.15 }}
-            className="flex flex-col items-center mx-6 cursor-pointer"
-          >
-            <img
-              src={logo.src}
-              alt={logo.name}
-              className="w-16 h-16 md:w-20 md:h-20 object-contain"
-            />
-            <p className="mt-4 text-sm font-medium text-gray-700">{logo.name}</p>
-          </motion.div>
+          <Link key={index} to={logo.link}>
+            <motion.div
+              whileHover={{ scale: 2.15 }}
+              className="flex flex-col items-center mx-6 cursor-pointer"
+            >
+              <img
+                src={logo.src}
+                alt={logo.name}
+                className="w-16 h-16 md:w-20 md:h-20 object-contain"
+              />
+              <p className="mt-4 text-sm font-medium text-gray-700">{logo.name}</p>
+            </motion.div>
+          </Link>
         ))}
       </motion.div>
     </div>

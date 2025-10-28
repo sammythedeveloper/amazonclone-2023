@@ -63,13 +63,13 @@ export const productsData = {
 
   headphones: [
     { id: "h1", title: "Sony WH-1000XM5", rating: 5, price: 399, desc: "Top noise-cancelling headphones with rich sound quality." },
-    { id: "h2", title: "Apple AirPods Max", rating: 5, price: 549, desc: "Premium over-ear headphones with excellent spatial audio." },
-    { id: "h3", title: "Bose QuietComfort Ultra", rating: 5, price: 499, desc: "Comfortable headphones with deep noise isolation." },
-    { id: "h4", title: "Sennheiser Momentum 4 Wireless", rating: 4, price: 379, desc: "High-fidelity sound for music and calls." },
-    { id: "h5", title: "Beats Studio Pro", rating: 4, price: 349, desc: "Stylish and energetic sound with solid bass." },
-    { id: "h6", title: "Audio-Technica ATH-M50xBT2", rating: 4, price: 299, desc: "Professional studio headphones with wireless freedom." },
-    { id: "h7", title: "JBL Tour One M2", rating: 4, price: 279, desc: "Good battery life with clear audio performance." },
-    { id: "h8", title: "Marshall Major IV", rating: 3, price: 199, desc: "Compact retro headphones for casual listening." },
+    { id: "h2", title: "Beats 4 Wireless", rating: 5, price: 549, desc: "Premium over-ear headphones with excellent spatial audio." },
+    { id: "h3", title: "JBL Tour One M2", rating: 5, price: 499, desc: "Comfortable headphones with deep noise isolation." },
+    { id: "h4", title: "Apple AirPods Max", rating: 4, price: 379, desc: "High-fidelity sound for music and calls." },
+    { id: "h5", title: "Airpod Pro 3", rating: 4, price: 349, desc: "Stylish and energetic sound with solid bass." },
+    { id: "h6", title: "Bose bluetooth QuietComfort Ultra", rating: 4, price: 299, desc: "Professional studio headphones with wireless freedom." },
+    { id: "h7", title: "Beats studio buds", rating: 4, price: 279, desc: "Good battery life with clear audio performance." },
+    { id: "h8", title: "Beats studio buds pink", rating: 3, price: 199, desc: "Compact retro headphones for casual listening." },
   ],
 
   gaming: [
@@ -86,22 +86,22 @@ export const productsData = {
   accessories: [
     { id: "a1", title: "Wix Handy Bag for accessories ", rating: 4, price: 49, desc: "convenient bag for carrying your accessories and devices." },
     { id: "a2", title: "Anker GaNPrime 65W Charger", rating: 5, price: 59, desc: "Compact charger with high-speed power delivery." },
-    { id: "a3", title: "Logitech MX Master 4 Mouse", rating: 5, price: 129, desc: "Ergonomic mouse for productivity and comfort." },
+    { id: "a3", title: "Logitech Laptop Mount", rating: 5, price: 129, desc: "Ergonomic lasptop mount for productivity and comfort." },
     { id: "a4", title: "Keychron K8 Pro Mechanical Keyboard", rating: 4, price: 99, desc: "Tactile mechanical keyboard with customizable keys." },
     { id: "a5", title: "Belkin 3-in-1 MagSafe Charging Stand", rating: 5, price: 149, desc: "Charge multiple devices simultaneously with ease." },
-    { id: "a6", title: "Samsung 2TB Portable SSD T9", rating: 5, price: 229, desc: "High-capacity portable storage for files on-the-go." },
+    { id: "a6", title: "Samsung 4000MP Charger powerbank", rating: 5, price: 229, desc: "High-capacity portable powerbank for phones" },
     { id: "a7", title: "Elgato Stream Deck MK.2", rating: 5, price: 179, desc: "Perfect tool for streamers with customizable buttons." },
     { id: "a8", title: "SanDisk Ultra 1TB microSDXC", rating: 4, price: 119, desc: "Reliable storage solution for cameras and phones." },
   ],
 
   smartlife: [
-    { id: "s1", title: "Amazon Echo Show 10", rating: 5, price: 249, desc: "Smart display with voice assistant and touchscreen." },
+    { id: "s1", title: "Ring Video Doorbell 4", rating: 5, price: 149, desc: "Smart display with voice assistant and touchscreen." },
     { id: "s2", title: "Google Nest Hub Max", rating: 4, price: 229, desc: "Smart home hub with display and camera features." },
-    { id: "s3", title: "Philips Hue Starter Kit", rating: 5, price: 179, desc: "Smart lighting kit for customizable home ambiance." },
-    { id: "s4", title: "Ring Video Doorbell 4", rating: 4, price: 199, desc: "Security doorbell with HD video and alerts." },
-    { id: "s5", title: "TP-Link Kasa Smart Plug 4-Pack", rating: 5, price: 69, desc: "Control your home devices remotely with ease." },
-    { id: "s6", title: "iRobot Roomba j7+", rating: 5, price: 899, desc: "Smart vacuum that cleans efficiently without effort." },
-    { id: "s7", title: "Dyson Purifier Cool AutoReact", rating: 4, price: 649, desc: "Air purifier with intelligent sensors and cooling." },
+    { id: "s3", title: "Google thermostat", rating: 5, price: 179, desc: "Smart for customizable home tempreature ambiance." },
+    { id: "s4", title: "Fizo power Projector 8K ", rating: 4, price: 599, desc: "Experiance the 8k video and and built in speaker." },
+    { id: "s5", title: "Samsung Smart Monitor M5", rating: 5, price: 969, desc: "Smart Monitor 32'' FHD HDRI0 Multiple ports  " },
+    { id: "s6", title: "Roomba j7+", rating: 5, price: 899, desc: "Smart efficient switches for rooms and home lights." },
+    { id: "s7", title: "Dyson HomeRobot Cleaner", rating: 4, price: 649, desc: "Smart vacuum that cleans efficiently without effort." },
     { id: "s8", title: "Nanoleaf Shapes Light Panels Kit", rating: 5, price: 249, desc: "Decorative modular lights for creative wall designs." },
   ],
 };
