@@ -32,7 +32,7 @@ const categoryInfo = {
     title: "Accessories",
     description: "Find all the tech accessories you need in one place.",
   },
-  smartwatches: {
+  watches: {
     title: "Smart Watches",
     description: "Stay connected and stylish with smart watches.",
   },
@@ -76,6 +76,7 @@ const ProductPage = () => {
             key={item.id}
             id={item.id}
             title={item.title}
+            desc={item.desc}
             image={item.image}
             rating={item.rating}
             price={item.price}

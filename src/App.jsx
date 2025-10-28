@@ -19,29 +19,50 @@ const key = loadStripe(
   "pk_test_51OMyLMHyEXHJUIn2SiwK4uPGQ7UCWEHnnLHu00idi1F21aJF5sL2fjawdt9zjKHbLuCK7aGctzxINMaheR70WQr500uAwonRLZ"
 );
 const App = () => {
-  const [{}, dispatch] = useStateValue();
-  useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        //the user just logged in /the user was logged in
+  const [, dispatch] = useStateValue();
 
-        dispatch({
-          type: "SET_USER",
-          user: authUser,
-        });
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      console.log("🔥 Auth changed:", authUser);
+      if (authUser) {
+        dispatch({ type: "SET_USER", user: authUser });
       } else {
-        //the user is logged out
-        dispatch({
-          type: "SET_USER",
-          user: null,
-        });
+        dispatch({ type: "SET_USER", user: null });
       }
     });
-  }, []);
+
+    return unsubscribe;
+  }, [dispatch]);
+
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <ScrollToTop /> 
+      <ScrollToTop />
       <Routes>
+        {/* Home */}
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <NavBar />
+              <HomePage />
+              <Footer />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Category */}
+        <Route
+          path="/category/:category"
+          element={
+            <ProtectedRoute>
+              <NavBar />
+              <ProductPage />
+              <Footer />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Checkout */}
         <Route
           path="/Checkout"
           element={
@@ -52,34 +73,8 @@ const App = () => {
             </>
           }
         />
-      </Routes>
 
-      <Routes>
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <NavBar />
-            <HomePage />
-            <Footer />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* ✅ Dynamic category route */}
-      <Route
-        path="/category/:category"
-        element={
-          <ProtectedRoute>
-            <NavBar />
-            <ProductPage />
-            <Footer />
-          </ProtectedRoute>
-        }
-      />
-      </Routes>
-
-      <Routes>
+        {/* Sign up / Sign in */}
         <Route
           path="/SignUp"
           element={
@@ -89,9 +84,6 @@ const App = () => {
             </>
           }
         />
-      </Routes>
-
-      <Routes>
         <Route
           path="/Signin"
           element={
@@ -101,9 +93,8 @@ const App = () => {
             </>
           }
         />
-      </Routes>
 
-      <Routes>
+        {/* Products */}
         <Route
           path="/Products"
           element={
@@ -114,9 +105,8 @@ const App = () => {
             </>
           }
         />
-      </Routes>
 
-      <Routes>
+        {/* Payment */}
         <Route
           path="/Payment"
           element={
@@ -129,9 +119,8 @@ const App = () => {
             </>
           }
         />
-      </Routes>
 
-      <Routes>
+        {/* Orders */}
         <Route
           path="/Orders"
           element={

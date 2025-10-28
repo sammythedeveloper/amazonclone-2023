@@ -3,14 +3,14 @@ import { Carousel } from "./";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import Phones from "../images/Smartphones/iPhone.jpg";
-import Laptops from "../images/Best-seller/3.jpg";
-import HeadPhones from "../images/Women/1.jpg";
-import Gaming from "../images/Gaming/out.jpg";
-import Cameras from "../images/Beauty/1.jpg";
-import Accessories from "../images/Luxury/Luxury.jpg";
-import SmartWatches from "../images/Luxury/Luxury.jpg";
-import SmartLifestyle from "../images/Luxury/Luxury.jpg";
+import Phones from "../images/phones/iphoneAir.jpg";
+import Laptops from "../images/laptops/0.jpg";
+import HeadPhones from "../images/headphones/0.jpg";
+import Gaming from "../images/Gaming/8.jpg";
+import Cameras from "../images/cameras/0.jpg";
+import Accessories from "../images/accessories/0.jpg";
+import SmartWatches from "../images/smartwatches/0.jpg";
+import SmartLifestyle from "../images/smartlife/0.jpg";
 
 const categories = [
   {

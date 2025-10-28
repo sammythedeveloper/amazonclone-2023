@@ -23,7 +23,7 @@ const NavBar = () => {
         {/* Logo */}
         <Link to="/" className="flex flex-col">
           <span className="text-3xl font-normal text-black">Nova Shop</span>
-          <span className="text-sm font-light text-red-500 hover:text-gray-400  ">
+          <span className="text-sm font-light text-black hover:text-gray-400  ">
             Funky Tech Accessories
           </span>
         </Link>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useStateValue } from "./StateProvider";
 import StarRateIcon from "@mui/icons-material/StarRate";
 
-const ProductDetail = ({ id, title, image, rating: initialRating, price }) => {
+const ProductDetail = ({ id, title, image, rating: initialRating, price ,desc }) => {
   const [{ basket }, dispatch] = useStateValue();
   const [rating, setRating] = useState(initialRating);
 
@@ -29,7 +29,9 @@ const ProductDetail = ({ id, title, image, rating: initialRating, price }) => {
         <h3 className="text-xs sm:text-sm md:text-base font-semibold text-gray-800 mb-1 sm:mb-2 line-clamp-2">
           {title}
         </h3>
-
+        <h3 className="text-xs sm:text-xsm font-light text-gray-800 mb-1 sm:mb-2 line-clamp-2">
+          {desc}
+        </h3>
         {/* Rating */}
         <div className="flex mb-1 sm:mb-2 text-orange-400">
           {Array(5)
